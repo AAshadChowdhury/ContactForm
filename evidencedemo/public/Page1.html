@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>ContactUS</title>
+    <link href="Default.css" rel="stylesheet" />
+    <script src="jquery-1.12.4.min.js"></script>
+</head>
+<body>
+    <div id="container">
+        <header>
+            <hgroup id="headerText">
+                <h1>Contoso Ltd.</h1>
+                <h2>Your success equals our success</h2>
+            </hgroup>
+            <nav>
+                <a href="#">Home</a>
+                <br />
+                <a href="./AsyncWork/Default.html">Asyncronous Work</a>
+            </nav>
+        </header>
+        <div role="main" >
+           
+            <form id="ContactForm" name="ContactForm" method="get" action="/myurl">
+                <h3>Contact Form</h3>
+                <div>
+                    <label for="fn">First Name</label>
+                    <br />
+                    <input id="fn" name="fn" type="text" placeholder="Your First Name" />
+                </div>
+                <div>
+                    <label for="ln">Last Name</label>
+                    <br />
+                    <input id="ln" name="ln" type="text" placeholder="Your Last Name" />
+                </div>
+                <div>
+                    <label for="em">Email</label>
+                    <br />
+                    <input id="em" name="em" type="email" placeholder="Your Email Address" />
+                </div>
+                <div>
+                    <label for="pn">Phone Number</label>
+                    <br />
+                    <input id="pn" name="pn" type="tel" placeholder="Your Phone Number" />
+                </div>
+                <div>
+                    <label for="location">Location</label>
+
+                    <select id="location" name="location">
+                        <option>Dhaka</option>
+                        <option>Chittagong</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="dt">Contact Dated</label>
+                    <input id="dt" name="dt" type="date" />
+                </div>
+                <div>
+                    <label >Selected Course</label>
+                    <input type="radio" id="rd" name="rd" value="ESAD" />ESAD<br />
+                    <input type="radio" id="rd" name="rd" value="NT" />NT<br />
+                    <input type="radio" id="rd" name="rd" value="JEE" />JEE<br />
+                </div>
+
+                <input id="Submit1" type="button" value="submit" />
+                <input id="btn2" type="button" value="Reset" onclick="ContactForm.reset()" />
+
+            </form>
+        </div>
+        <div id="ads">
+            <aside>
+                <p> Advertisements</p>
+            </aside>
+        </div>
+        <footer>
+            <p>
+                Copyright &copy; 2021,Contoso Ltd., All rights reserved.
+            </p>
+        </footer>
+    </div>
+    <div id="result"></div>
+    <script>
+      
+        $(document).ready(function () {
+            $("#Submit1").click(function () {
+               
+                u = "http://localhost:8080/myurl?fn=" + $("#fn").val() + "&ln=" + $("#ln").val() + "&em=" + $("#em").val() + "&pn=" + $("#pn").val() + "&location=" + $("#location").val() + "&dt=" + $("#dt").val() + "&rd=" + $("#rd:checked").val();
+                $.get(u, function (data) {
+                    $("#result").html(data);
+                });
+            });
+     
+        })
+    </script>
+
+
+
+</body>
+</html>
